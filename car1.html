@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyundai Car Checkout</title>
+    <Style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.checkout-container {
+    background-color: white;
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+    </Style>
+</head>
+<body>
+
+    <div class="checkout-container">
+        <h1>Hyundai Car Checkout</h1>
+        
+        <form id="checkout-form">
+            <div class="form-group">
+                <label for="customer-name">Full Name</label>
+                <input type="text" id="customer-name" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="car-model">Select Car Model</label>
+                <select id="car-model">
+                    <option value="hyundai-i20">Hyundai i20</option>
+                    <option value="hyundai-elantra">Hyundai Elantra</option>
+                    <option value="hyundai-creta">Hyundai Creta</option>
+                    <option value="hyundai-santro">Hyundai Santro</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="payment">Payment Method</label>
+                <select id="payment">
+                    <option value="credit-card">Credit Card</option>
+                    <option value="debit-card">Debit Card</option>
+                    <option value="net-banking">Net Banking</option>
+                    <option value="cash-on-delivery">Cash on Delivery</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Total Price:</label>
+                <p id="car-price">$20,000</p>  <!-- Default price for Hyundai i20, can be updated dynamically -->
+            </div>
+
+            <button type="submit" id="checkout-btn">Proceed to Checkout</button>
+        </form>
+    </div>
+<Script>
+    document.getElementById('checkout-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting
+
+    // Get customer data
+    const name = document.getElementById('customer-name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const carModel = document.getElementById('car-model').value;
+    const paymentMethod = document.getElementById('payment').value;
+    
+    // Example prices for car models
+    const carPrices = {
+        'hyundai-i20': 20000,
+        'hyundai-elantra': 25000,
+        'hyundai-creta': 30000,
+        'hyundai-santro': 15000
+    };
+
+    // Set the total price based on the car model selected
+    const price = carPrices[carModel];
+    document.getElementById('car-price').textContent = `$${price}`;
+
+    // Display a message with the checkout information
+    alert(`Thank you for your purchase, ${name}!\n\nCar Model: ${carModel}\nTotal Price: $${price}\nPayment Method: ${paymentMethod}`);
+});
+
+</Script>
+</body>
+</html>
